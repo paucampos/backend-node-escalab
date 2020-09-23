@@ -21,13 +21,24 @@ const orderRoutes = require('./routes/order');
 const app = express();
 
 
-//db
+// modern connection db
 mongoose
-    .connect(process.env.DATABASE, {
-        useNewUrlParser: true,
-        useCreateIndex: true
-    })
-    .then(() => console.log('DB Connected'));
+const db = async() => {
+    try {
+        const success = await mongoose.connect(process.env.DATABASE, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useCreateIndex: true,
+            useFindAndModify: false
+        });
+        console.log('DB connected!');
+    } catch (error) {
+        console.log('DB connection Error', error);
+    };
+}
+
+// execute db connection
+db();
 
 // Middleware
 app.use(morgan('dev'));
