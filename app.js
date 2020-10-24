@@ -12,10 +12,10 @@ const swaggerUi = require("swagger-ui-express");
 // Import routes
 const authRoutes = require('./routes/auth');
 const categoryRoutes = require('./routes/category');
-// const orderRoutes = require('./routes/order');
+const orderRoutes = require('./routes/order');
 const productRoutes = require('./routes/product');
 const userRoutes = require('./routes/user');
-// const braintreeRoutes = require('./routes/braintree');
+const braintreeRoutes = require('./routes/braintree');
 
 
 // app - express
@@ -74,8 +74,8 @@ app.use('/api', authRoutes);
 app.use('/api', categoryRoutes);
 app.use('/api', userRoutes);
 app.use('/api', productRoutes);
-// app.use('/api', braintreeRoutes);
-// app.use('/api', orderRoutes);
+app.use('/api', braintreeRoutes);
+app.use('/api', orderRoutes);
 
 
 // Port
